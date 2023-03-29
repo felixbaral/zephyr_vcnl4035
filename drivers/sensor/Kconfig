@@ -1,0 +1,3 @@
+#if CONFIG_VCNL4035
+rsource "vcnl4035/Kconfig"
+#endif # CONFIG_VCNL4035

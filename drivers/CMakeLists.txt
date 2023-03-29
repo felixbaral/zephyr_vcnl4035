@@ -1,0 +1,1 @@
+add_subdirectory_ifdef(CONFIG_VCNL4035 sensor)

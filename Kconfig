@@ -1,2 +1,2 @@
 
-rsource "drivers/vcnl4035/Kconfig"
+rsource "drivers/Kconfig"

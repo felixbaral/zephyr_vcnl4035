@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
-zephyr_library()
-
 zephyr_include_directories(include)
-zephyr_library_sources_ifdef(CONFIG_VCNL4035_TRIGGER drivers/vcnl4035)
+zephyr_include_directories(include/drivers)
+zephyr_include_directories(include/drivers/vcnl4035)
+add_subdirectory(drivers)

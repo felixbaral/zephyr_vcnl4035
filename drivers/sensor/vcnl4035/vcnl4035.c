@@ -14,7 +14,7 @@
 #include <zephyr/logging/log.h>
 #include <stdlib.h>
 
-LOG_MODULE_REGISTER(vcnl4035, 4);
+LOG_MODULE_REGISTER(vcnl4035, 5);
 
 int vcnl4035_read(const struct device *dev, uint8_t reg, uint16_t *out)
 {
@@ -166,9 +166,10 @@ static int vcnl4035_configure_PS_CONF_1_PS_CONF_2(const struct device *dev, cons
 	// - 
 	// PS_INT
 	// - 
-	// TODO: da habe ich eigentlich close away configuriert
 
-	
+
+	LOG_DBG("PS_CONF_1 PS_CONF_2 0x%x", conf);
+
 
 	if (vcnl4035_write(dev, VCNL4035_REG_PS_CONF_1_2, conf)) {
 		LOG_ERR("Could not write proximity config");
@@ -205,14 +206,15 @@ static int vcnl4035_configure_PS_CONF_3_PS_MS(const struct device *dev, const st
 	// SMART_PERS
 	// - 
 	// enable active force mode enabled (PS_AF)
-	// -
+	conf |= VCNL4035_PS_AF_DISABLED;
 	// active force mode (PS_TRIG)
-	// -
+	conf |= VCNL4035_PS_TRIG_ENABLED;
 	// normal operation with interrupt (PS_MS)
-	// -
+	conf |= VCNL4035_PS_MS_DISABLED;
 	// sun cancel (PS_SC_EN)
 	// -
-
+	
+	LOG_DBG("PS_CONF_3 PS_MS 0x%x", conf);
 
 	if (vcnl4035_write(dev, VCNL4035_REG_PS_MS_CONF3, conf)) {
 		LOG_ERR("Could not write proximity config");

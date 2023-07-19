@@ -14,7 +14,7 @@
 #include <zephyr/logging/log.h>
 #include <stdlib.h>
 
-LOG_MODULE_REGISTER(vcnl4035, 5);
+LOG_MODULE_REGISTER(vcnl4035, CONFIG_SENSOR_LOG_LEVEL);
 
 int vcnl4035_read(const struct device *dev, uint8_t reg, uint16_t *out)
 {
